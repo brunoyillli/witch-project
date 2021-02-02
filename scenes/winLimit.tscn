@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/hud.png" type="Texture" id=1]
+[ext_resource path="res://scenes/hud.gd" type="Script" id=2]
+[ext_resource path="res://Stages/hearts.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ScoreNameVar.gd" type="Script" id=4]
+[ext_resource path="res://scenes/TotalScoreVar.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 241.45, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 294.995, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 134.678, 287.582 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 59.5079, 303.348 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 307.212, 61.468 )
+
+[node name="winLimit" type="Node"]
+
+[node name="hud" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="hud" type="Sprite" parent="hud"]
+scale = Vector2( 1.25, 1.25005 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="TotalScoreName" type="RichTextLabel" parent="hud"]
+margin_left = 555.857
+margin_top = 54.0173
+margin_right = 735.857
+margin_bottom = 88.0173
+text = "High Score
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalScoreVar" type="RichTextLabel" parent="hud"]
+margin_left = 660.324
+margin_top = 61.1606
+margin_right = 840.324
+margin_bottom = 95.1606
+text = "000000000
+"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreName" type="RichTextLabel" parent="hud"]
+margin_left = 555.857
+margin_top = 86.0173
+margin_right = 735.857
+margin_bottom = 120.017
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreNameVar" type="RichTextLabel" parent="hud"]
+margin_left = 660.625
+margin_top = 93.1291
+margin_right = 840.625
+margin_bottom = 127.129
+text = "000000000
+"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life" type="RichTextLabel" parent="hud"]
+margin_left = 558.625
+margin_top = 136.129
+margin_right = 738.625
+margin_bottom = 170.129
+text = "Life"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hearts" type="Sprite" parent="hud"]
+position = Vector2( 664, 144 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="Power" type="RichTextLabel" parent="hud"]
+margin_left = 558.625
+margin_top = 227.129
+margin_right = 738.625
+margin_bottom = 261.129
+text = "Power
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="RichTextLabel" parent="hud"]
+margin_left = 698.0
+margin_top = 208.0
+margin_right = 740.0
+margin_bottom = 228.0
+text = "Lv  .1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="power" type="Sprite" parent="hud"]
+modulate = Color( 0.054902, 1, 0, 1 )
+position = Vector2( 624, 235 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="limPlayer" type="Node2D" parent="."]
+
+[node name="winLimBody" type="StaticBody2D" parent="limPlayer"]
+position = Vector2( 278.752, 10.2728 )
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="limPlayer/winLimBody"]
+modulate = Color( 0.0470588, 0.027451, 0.027451, 1 )
+shape = SubResource( 1 )
+
+[node name="winLimBody2" type="StaticBody2D" parent="limPlayer"]
+position = Vector2( 278.536, 589.763 )
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="limPlayer/winLimBody2"]
+modulate = Color( 0.0470588, 0.027451, 0.027451, 1 )
+shape = SubResource( 1 )
+
+[node name="winLimBody3" type="StaticBody2D" parent="limPlayer"]
+position = Vector2( 31.1249, 307.206 )
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="limPlayer/winLimBody3"]
+modulate = Color( 0.0470588, 0.027451, 0.027451, 1 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="winLimBody4" type="StaticBody2D" parent="limPlayer"]
+position = Vector2( 528.423, 289.567 )
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="limPlayer/winLimBody4"]
+modulate = Color( 0.0470588, 0.027451, 0.027451, 1 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="deleta" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="shape" type="CollisionShape2D" parent="deleta"]
+position = Vector2( 655.519, 275.146 )
+shape = SubResource( 3 )
+
+[node name="shape2" type="CollisionShape2D" parent="deleta"]
+position = Vector2( -35.7717, 295.894 )
+shape = SubResource( 4 )
+
+[node name="shape3" type="CollisionShape2D" parent="deleta"]
+position = Vector2( 278.961, -47.9829 )
+shape = SubResource( 5 )
+
+[node name="shape4" type="CollisionShape2D" parent="deleta"]
+position = Vector2( 275.263, 651.076 )
+shape = SubResource( 5 )

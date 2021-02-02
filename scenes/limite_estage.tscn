@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 564.536, 1.85443 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 651.944, 1.85443 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 598.872, 2.36726 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 598.872, 2.36726 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 576.071, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 576.071, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 576.071, 10 )
+
+[node name="limite_estage" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="wall" type="CollisionShape2D" parent="."]
+position = Vector2( -0.411858, 307.306 )
+rotation = 1.57189
+scale = Vector2( 0.566704, 5.15954 )
+shape = SubResource( 1 )
+
+[node name="wall2" type="CollisionShape2D" parent="."]
+position = Vector2( 407.761, 603.233 )
+rotation = -0.000667645
+scale = Vector2( 0.645795, -4.92237 )
+shape = SubResource( 2 )
+
+[node name="wall3" type="CollisionShape2D" parent="."]
+position = Vector2( 790.503, 306.186 )
+rotation = -1.5685
+scale = Vector2( 0.516982, 4.09269 )
+shape = SubResource( 3 )
+
+[node name="wall4" type="CollisionShape2D" parent="."]
+position = Vector2( 412.043, -0.1846 )
+rotation = -3.1416
+scale = Vector2( 0.688667, 4.44903 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 23.1263 )
+collision_layer = 8
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 401.31, 644.817 )
+rotation = -0.00872743
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 847.309, 259.889 )
+rotation = -1.56127
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -61.3441, 254.337 )
+rotation = -1.56127
+shape = SubResource( 7 )

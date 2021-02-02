@@ -1,0 +1,395 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/winLimit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy_Spawn/EnemySpawn_fada_azul.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/timeGame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/background test.png" type="Texture" id=5]
+[ext_resource path="res://Stages/background_stage_1/treeVFX.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stages/background_stage_1/rockVFX.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sound/BGM/stage1.ogg" type="AudioStream" id=8]
+[ext_resource path="res://interfaces/Pause.gd" type="Script" id=9]
+[ext_resource path="res://sprites/hud.png" type="Texture" id=10]
+[ext_resource path="res://Stages/spawncontrol.gd" type="Script" id=11]
+[ext_resource path="res://dialogs/Dialogo_scene1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gameover/gameovergd.gd" type="Script" id=13]
+[ext_resource path="res://Stages/background_stage_1/Background2.gd" type="Script" id=14]
+
+[node name="estage_1" type="Node2D"]
+
+[node name="DialogoLayer" type="CanvasLayer" parent="."]
+layer = 21
+
+[node name="Dialogo" parent="DialogoLayer" instance=ExtResource( 12 )]
+pause_mode = 2
+position = Vector2( 273.165, 610 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="Background"]
+modulate = Color( 0.380392, 0.380392, 0.380392, 1 )
+position = Vector2( -72.8069, 249.165 )
+z_index = -3
+texture = ExtResource( 5 )
+region_rect = Rect2( 253.908, 100.897, 381.605, 320.654 )
+
+[node name="Background2" type="Sprite" parent="Background"]
+modulate = Color( 0.4, 0.4, 0.4, 1 )
+position = Vector2( 276.26, 287.219 )
+z_index = -3
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 232.593, -812.019, 351.478, 2364.43 )
+script = ExtResource( 14 )
+
+[node name="rocks" type="Node" parent="Background"]
+
+[node name="rockVFX" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 191.462, -176.003 )
+
+[node name="rockVFX2" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 386.433, -195.721 )
+scale = Vector2( -1, 1 )
+
+[node name="rockVFX3" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 333.393, -331.844 )
+
+[node name="rockVFX6" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 373.393, -627.844 )
+
+[node name="rockVFX4" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 217.323, -481.867 )
+scale = Vector2( -1, 1 )
+
+[node name="rockVFX5" parent="Background/rocks" instance=ExtResource( 7 )]
+position = Vector2( 177.323, -649.867 )
+scale = Vector2( -1, 1 )
+
+[node name="trees" type="Node" parent="Background"]
+
+[node name="trees2" type="Node2D" parent="Background/trees"]
+position = Vector2( 13.0341, -612.349 )
+z_index = -1
+
+[node name="treeVFX5" parent="Background/trees/trees2" instance=ExtResource( 6 )]
+position = Vector2( 355.631, 71.6546 )
+
+[node name="pack" type="Node2D" parent="Background/trees/trees2"]
+position = Vector2( 83.7445, -10.6908 )
+
+[node name="treeVFX2" parent="Background/trees/trees2/pack" instance=ExtResource( 6 )]
+position = Vector2( 47.8291, 59.4498 )
+
+[node name="treeVFX5" parent="Background/trees/trees2/pack" instance=ExtResource( 6 )]
+position = Vector2( 33.3874, 163.152 )
+scale = Vector2( -1, 1 )
+
+[node name="pack5" type="Node2D" parent="Background/trees/trees2"]
+position = Vector2( 184.842, 132.327 )
+
+[node name="treeVFX5" parent="Background/trees/trees2/pack5" instance=ExtResource( 6 )]
+position = Vector2( 4.32977, 63.1037 )
+
+[node name="treeVFX9" parent="Background/trees/trees2/pack5" instance=ExtResource( 6 )]
+position = Vector2( 0.655151, 160.937 )
+scale = Vector2( -1, 1 )
+
+[node name="trees3" type="Node2D" parent="Background/trees"]
+position = Vector2( 95.2612, -188.051 )
+z_index = -1
+
+[node name="treeVFX9" parent="Background/trees/trees3" instance=ExtResource( 6 )]
+position = Vector2( 49.465, 43.656 )
+
+[node name="treeVFX10" parent="Background/trees/trees3" instance=ExtResource( 6 )]
+position = Vector2( 49.465, 43.656 )
+
+[node name="treeVFX2" parent="Background/trees/trees3" instance=ExtResource( 6 )]
+position = Vector2( 307.611, 83.785 )
+
+[node name="treeVFX3" parent="Background/trees/trees3" instance=ExtResource( 6 )]
+position = Vector2( 53.3176, 188.641 )
+scale = Vector2( -1, 1 )
+
+[node name="trees5" type="Node2D" parent="Background/trees"]
+position = Vector2( 317.48, -466.696 )
+z_index = -1
+
+[node name="treeVFX" parent="Background/trees/trees5" instance=ExtResource( 6 )]
+position = Vector2( 145.357, 73.6222 )
+
+[node name="treeVFX8" parent="Background/trees/trees5" instance=ExtResource( 6 )]
+position = Vector2( 64.2484, 24.0554 )
+
+[node name="treeVFX5" parent="Background/trees/trees5" instance=ExtResource( 6 )]
+position = Vector2( 70.4413, 145.541 )
+
+[node name="trees7" type="Node2D" parent="Background/trees"]
+position = Vector2( 412.617, -488.102 )
+z_index = -1
+
+[node name="treeVFX5" parent="Background/trees/trees7" instance=ExtResource( 6 )]
+position = Vector2( 62.7548, 216.795 )
+
+[node name="Background3" type="Sprite" parent="Background"]
+modulate = Color( 0, 0, 0, 0.733333 )
+position = Vector2( -40.049, 256.057 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 253.908, 100.897, 381.605, 320.654 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 296.799, 516.626 )
+
+[node name="spawn" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="30 seg" type="Node" parent="spawn"]
+
+[node name="EnemySpawn_azul" parent="spawn/30 seg" instance=ExtResource( 3 )]
+position = Vector2( 75, -8.851 )
+triggerSpawn = [ 1.0, 4000.0, 140.0, 180.0, 200.0 ]
+spawnType = [ 5, 2, 3, 1, 2 ]
+
+[node name="EnemySpawn_azul2" parent="spawn/30 seg" instance=ExtResource( 3 )]
+position = Vector2( 165, -14.171 )
+triggerSpawn = [ 5.0, 4000.0, 33.0, 66.0, 111.0 ]
+spawnType = [ 3, 4, 3, 3, 1 ]
+
+[node name="EnemySpawn_azul3" parent="spawn/30 seg" instance=ExtResource( 3 )]
+position = Vector2( 260, -13.416 )
+triggerSpawn = [ 20.0, 4000.0, 10.0, 80.0, 100.0 ]
+spawnType = [ 3, 3, 3, 3, 1 ]
+
+[node name="EnemySpawn_azul4" parent="spawn/30 seg" instance=ExtResource( 3 )]
+position = Vector2( 365, -12.174 )
+triggerSpawn = [ 15.0, 4000.0, 120.0, 150.0, 170.0 ]
+spawnType = [ 3, 4, 1, 3, 1 ]
+
+[node name="EnemySpawn_azul5" parent="spawn/30 seg" instance=ExtResource( 3 )]
+position = Vector2( 470, -11.128 )
+triggerSpawn = [ 30.0, 4000.0, 150.0, 200.0, 220.0 ]
+spawnType = [ 3, 3, 3, 3, 1 ]
+
+[node name="60 seg" type="Node" parent="spawn"]
+
+[node name="EnemySpawn_azul" parent="spawn/60 seg" instance=ExtResource( 3 )]
+position = Vector2( 75, -8.851 )
+triggerSpawn = [ 40.0, 50.0, 4000.0, 180.0, 200.0 ]
+spawnType = [ 3, 3, 3, 1, 2 ]
+
+[node name="EnemySpawn_azul2" parent="spawn/60 seg" instance=ExtResource( 3 )]
+position = Vector2( 165, -14.171 )
+triggerSpawn = [ 42.0, 4000.0, 33.0, 66.0, 111.0 ]
+spawnType = [ 3, 3, 3, 3, 1 ]
+
+[node name="EnemySpawn_azul3" parent="spawn/60 seg" instance=ExtResource( 3 )]
+position = Vector2( 260, -13.416 )
+triggerSpawn = [ 44.0, 60.0, 4000.0, 80.0, 100.0 ]
+spawnType = [ 3, 5, 5, 3, 1 ]
+
+[node name="EnemySpawn_azul4" parent="spawn/60 seg" instance=ExtResource( 3 )]
+position = Vector2( 365, -12.174 )
+triggerSpawn = [ 46.0, 4000.0, 120.0, 150.0, 170.0 ]
+spawnType = [ 3, 4, 1, 3, 1 ]
+
+[node name="EnemySpawn_azul5" parent="spawn/60 seg" instance=ExtResource( 3 )]
+position = Vector2( 470, -11.128 )
+triggerSpawn = [ 48.0, 4000.0, 150.0, 200.0, 220.0 ]
+spawnType = [ 3, 3, 3, 3, 1 ]
+
+[node name="100" type="Node" parent="spawn"]
+
+[node name="EnemySpawn_azul" parent="spawn/100" instance=ExtResource( 3 )]
+position = Vector2( 75, -8.851 )
+triggerSpawn = [ 65.0, 75.0, 4000.0, 180.0, 200.0 ]
+spawnType = [ 3, 3, 3, 1, 2 ]
+
+[node name="EnemySpawn_azul2" parent="spawn/100" instance=ExtResource( 3 )]
+position = Vector2( 165, -14.171 )
+triggerSpawn = [ 66.0, 79.0, 90.0, 4000.0, 111.0 ]
+spawnType = [ 3, 3, 4, 3, 1 ]
+
+[node name="EnemySpawn_azul3" parent="spawn/100" instance=ExtResource( 3 )]
+position = Vector2( 260, -13.416 )
+triggerSpawn = [ 70.0, 84.0, 4000.0, 80.0, 100.0 ]
+spawnType = [ 4, 5, 5, 3, 1 ]
+
+[node name="EnemySpawn_azul4" parent="spawn/100" instance=ExtResource( 3 )]
+position = Vector2( 365, -12.174 )
+triggerSpawn = [ 66.0, 81.0, 4000.0, 150.0, 170.0 ]
+spawnType = [ 3, 3, 1, 3, 1 ]
+
+[node name="EnemySpawn_azul5" parent="spawn/100" instance=ExtResource( 3 )]
+position = Vector2( 470, -11.128 )
+triggerSpawn = [ 65.0, 77.0, 100.0, 4000.0, 220.0 ]
+spawnType = [ 3, 3, 5, 3, 1 ]
+
+[node name="boss" type="Node" parent="spawn"]
+
+[node name="EnemySpawn_azul" parent="spawn/boss" instance=ExtResource( 3 )]
+position = Vector2( 75, -8.851 )
+triggerSpawn = [ 4000.0, 75.0, 4000.0, 180.0, 200.0 ]
+spawnType = [ 3, 3, 3, 1, 2 ]
+
+[node name="EnemySpawn_azul2" parent="spawn/boss" instance=ExtResource( 3 )]
+position = Vector2( 165, -14.171 )
+triggerSpawn = [ 4000.0, 79.0, 90.0, 4000.0, 111.0 ]
+spawnType = [ 3, 3, 4, 3, 1 ]
+
+[node name="EnemySpawn_azul3" parent="spawn/boss" instance=ExtResource( 3 )]
+position = Vector2( 260, -13.416 )
+triggerSpawn = [ 101.0, 4000.0, 101.0, 4000.0, 100.0 ]
+spawnType = [ 6, 5, 5, 3, 1 ]
+
+[node name="EnemySpawn_azul4" parent="spawn/boss" instance=ExtResource( 3 )]
+position = Vector2( 365, -12.174 )
+triggerSpawn = [ 4000.0, 81.0, 4000.0, 150.0, 170.0 ]
+spawnType = [ 3, 3, 1, 3, 1 ]
+
+[node name="EnemySpawn_azul5" parent="spawn/boss" instance=ExtResource( 3 )]
+position = Vector2( 470, -11.128 )
+triggerSpawn = [ 4000.0, 77.0, 100.0, 4000.0, 220.0 ]
+spawnType = [ 3, 3, 5, 3, 1 ]
+
+[node name="spawnPos" type="Position2D" parent="."]
+position = Vector2( 283.588, 9.91168 )
+
+[node name="winLimit" parent="." instance=ExtResource( 2 )]
+
+[node name="timeGame" parent="." instance=ExtResource( 4 )]
+wait_time = 0.25
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "BGM"
+
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Pause" type="Control" parent="Pause"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.427451 )
+
+[node name="Continue" type="Button" parent="Pause/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -10.0
+margin_right = 6.0
+margin_bottom = 10.0
+text = "Continue"
+flat = true
+
+[node name="sprite" type="Sprite" parent="Pause/Pause/Continue"]
+modulate = Color( 1, 1, 1, 0.219608 )
+position = Vector2( 36, 10 )
+z_index = 1
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 494.739, 33.2718, 89.4777, 33.8678 )
+
+[node name="Quit" type="Button" parent="Pause/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.81836
+margin_top = 35.2845
+margin_right = 48.8184
+margin_bottom = 55.2845
+text = "Quit"
+flat = true
+
+[node name="sprite" type="Sprite" parent="Pause/Pause/Quit"]
+modulate = Color( 1, 1, 1, 0.219608 )
+position = Vector2( 20, 9 )
+z_index = 1
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 494.739, 33.2718, 88.6415, 33.8678 )
+
+[node name="Gameover" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Control" type="Control" parent="Gameover"]
+pause_mode = 2
+visible = false
+margin_right = 800.0
+margin_bottom = 601.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Gameover/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.2061
+margin_top = 1.29413
+margin_right = -15.2061
+margin_bottom = 1.29413
+color = Color( 0, 0, 0, 0.427451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="Gameover/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -9.5
+margin_right = 77.0
+margin_bottom = 10.5
+text = "Restart"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite" type="Sprite" parent="Gameover/Control/Restart"]
+modulate = Color( 1, 1, 1, 0.219608 )
+position = Vector2( 36, 10 )
+z_index = 1
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 494.739, 33.2718, 89.4777, 33.8678 )
+
+[node name="Quit" type="Button" parent="Gameover/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.81836
+margin_top = 35.2845
+margin_right = 48.8184
+margin_bottom = 55.2845
+text = "Quit"
+flat = true
+
+[node name="sprite" type="Sprite" parent="Gameover/Control/Quit"]
+modulate = Color( 1, 1, 1, 0.219608 )
+position = Vector2( 20, 9 )
+z_index = 1
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 494.739, 33.2718, 88.6415, 33.8678 )
+[connection signal="pressed" from="Pause/Pause/Continue" to="Pause/Pause" method="_on_Continue_pressed"]
+[connection signal="pressed" from="Pause/Pause/Quit" to="Pause/Pause" method="_on_Quit_pressed"]
+[connection signal="pressed" from="Gameover/Control/Restart" to="Gameover/Control" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Gameover/Control/Quit" to="Gameover/Control" method="_on_Quit_pressed"]

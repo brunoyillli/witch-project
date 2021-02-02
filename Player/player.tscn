@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://resources/player_skin_red.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Player/player.gd" type="Script" id=2]
+[ext_resource path="res://Sound/SFX/playerShoot/shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://sprites/enemies/spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://luz redemoinho.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Button/lineDark02.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Button/shadedDark11.png" type="Texture" id=8]
+[ext_resource path="res://Player/Joystick_button.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 80.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "imune"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 4.99041
+height = 0.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, 1.0, 1.5 ]
+}
+
+[node name="player" type="KinematicBody2D"]
+collision_mask = 46
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "move 1"
+frame = 3
+speed_scale = 2.0
+playing = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( -525.811, -405.26 )
+scale = Vector2( 55.2578, 42.8128 )
+shape = SubResource( 1 )
+
+[node name="muzzle" type="Position2D" parent="."]
+position = Vector2( -11.6898, -17.3709 )
+
+[node name="shootTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="shootSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -8.0
+pitch_scale = 3.0
+bus = "SFX"
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Joystick" type="Sprite" parent="Hud"]
+position = Vector2( 106.109, 514.221 )
+texture = ExtResource( 7 )
+
+[node name="Joystick_button" type="TouchScreenButton" parent="Hud/Joystick"]
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 8 )
+shape = SubResource( 2 )
+script = ExtResource( 9 )
+
+[node name="imune" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="animImun" type="AnimationPlayer" parent="."]
+anims/imune = SubResource( 3 )
+anims/normal = SubResource( 4 )
+
+[node name="player_shape" type="Sprite" parent="."]
+position = Vector2( -0.5, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 308.453, 1515.68, 24.1041, 24.5497 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="Light" type="Light2D" parent="."]
+position = Vector2( -11.6673, -12.3744 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 5 )
+energy = 1.5
+
+[node name="anim" type="AnimationPlayer" parent="Light"]
+autoplay = "idle"
+anims/idle = SubResource( 6 )
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]
+[connection signal="timeout" from="shootTimer" to="." method="_on_shootTimer_timeout"]
+[connection signal="timeout" from="imune" to="." method="_on_imune_timeout"]
