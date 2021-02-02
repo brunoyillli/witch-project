@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=2]
+
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R5.png" type="Texture" id=1]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R6.png" type="Texture" id=2]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R7.png" type="Texture" id=3]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R8.png" type="Texture" id=4]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_4.png" type="Texture" id=7]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_5.png" type="Texture" id=9]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_1.png" type="Texture" id=10]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R3.png" type="Texture" id=11]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R2.png" type="Texture" id=12]
+[ext_resource path="res://sprites/enemies/fada_azul/fada_azul_R4.png" type="Texture" id=13]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "movimentacao_fada_azul_direita",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "movimentacao_fada_azul_preparar_direita",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "movimentacao_fada_azul",
+"speed": 5.0
+} ]

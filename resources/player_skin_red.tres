@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=2]
+
+[ext_resource path="res://sprites/player/main2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/player/main5.png" type="Texture" id=2]
+[ext_resource path="res://sprites/player/main1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/player/main3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/main7.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/main6.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/main4.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/main8.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/misaki_alternativa4.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/misaki_alternativa5.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/misaki_alternativa2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/misaki_alternativa1.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/misaki_alternativa3.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/misaki_alternativa7.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/misaki_alternativa6.png" type="Texture" id=15]
+[ext_resource path="res://sprites/player/misaki_alternativa8.png" type="Texture" id=16]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "move 1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/enemies/atk_grande_enemy/enemyBlack1.png" type="Texture" id=1]
+[ext_resource path="res://Inimigos/Inimigo_teleguiado_Grande/Inimigo_tele_Grande.gd" type="Script" id=2]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2147483650
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 1 )
+
+[node name="Move_Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 7.67407, 30.2604, 12.6797, 12.2401, -13.3497, 11.9064, -8.67772, 30.2604, -20.3576, 31.929, -37.3768, -13.1219, -23.361, -33.8119, -7.67659, -25.1354, -8.0103, -19.4623, 7.00665, -19.1286, 9.00891, -28.1388, 23.3584, -33.1444, 37.0405, -11.1196, 18.6865, 33.9313 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

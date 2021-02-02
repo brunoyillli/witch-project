@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Stages/background_stage_1/treeVFX.gd" type="Script" id=1]
+[ext_resource path="res://arvore.png" type="Texture" id=2]
+
+[node name="treeVFX" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="."]
+position = Vector2( -18.8055, 20.3947 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite3" type="Sprite" parent="."]
+position = Vector2( 33.8642, 4.33921 )
+texture = ExtResource( 2 )
+
+[node name="sprite5" type="Sprite" parent="."]
+position = Vector2( 43.3126, 40.972 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite6" type="Sprite" parent="."]
+position = Vector2( -31.7254, 55.6021 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="sprite4" type="Sprite" parent="."]
+position = Vector2( 8.86121, 59.3776 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )

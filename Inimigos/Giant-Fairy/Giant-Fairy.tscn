@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/enemies/spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Inimigos/Giant-Fairy/giant-fairy.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 48, 1768, 64, 60 ), Rect2( 112, 1768, 64, 60 ), Rect2( 176, 1768, 64, 60 ), Rect2( 240, 1768, 64, 60 ), Rect2( 304, 1768, 64, 60 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "moving"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 436, 1644, 56, 52 ), Rect2( 500, 1644, 48, 48 ), Rect2( 436, 1704, 48, 52 ), Rect2( 500, 1704, 52, 52 ), Rect2( 436, 1768, 56, 56 ) ]
+}
+
+[node name="giant-fairy" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 436, 1644, 56, 52 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/moving = SubResource( 2 )
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="shape" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -28.1102, -22.8605, -13.5426, 18.9883, 10.8251, 18.9883, 28.5711, -23.1254 )
+
+[node name="waitTimer" type="Timer" parent="."]
+wait_time = 5.0
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="waitTimer" to="." method="_on_waitTimer_timeout"]
