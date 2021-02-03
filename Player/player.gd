@@ -120,11 +120,15 @@ func attack():
 				bullet2.add_to_group("bullet_player") #add no grupo 
 				bullet2.global_position = $muzzle.global_position
 				bullet2.dir = Vector2(cos(deg2rad(260)),sin(deg2rad(260)))
+				bullet2.get_node("Light2D").rotation = deg2rad(170)
+				bullet2.get_node("Light2D").scale.y = -1*bullet2.get_node("Light2D").scale.y
 				get_parent().add_child(bullet2)
 				var bullet3 = pre_bullet.instance()
 				bullet3.add_to_group("bullet_player") #add no grupo 
 				bullet3.global_position = $muzzle.global_position
 				bullet3.dir = Vector2(cos(deg2rad(280)),sin(deg2rad(280)))
+				bullet3.get_node("Light2D").rotation = deg2rad(190)
+				bullet3.get_node("Light2D").scale.y = -1*bullet3.get_node("Light2D").scale.y
 				get_parent().add_child(bullet3)
 				canShoot=false
 				shootSFX()
@@ -140,11 +144,15 @@ func attack():
 				bullet2.add_to_group("bullet_player") #add no grupo 
 				bullet2.global_position = $muzzle.global_position
 				bullet2.dir = Vector2(cos(deg2rad(250)),sin(deg2rad(250)))
+				bullet2.get_node("Light2D").rotation = deg2rad(160)
+				bullet2.get_node("Light2D").scale.y = -1*bullet2.get_node("Light2D").scale.y
 				get_parent().add_child(bullet2)
 				var bullet3 = pre_bullet.instance()
 				bullet3.add_to_group("bullet_player") #add no grupo 
 				bullet3.global_position = $muzzle.global_position
 				bullet3.dir = Vector2(cos(deg2rad(290)),sin(deg2rad(290)))
+				bullet3.get_node("Light2D").rotation = deg2rad(200)
+				bullet3.get_node("Light2D").scale.y = -1*bullet3.get_node("Light2D").scale.y
 				get_parent().add_child(bullet3)
 				if get_tree().get_nodes_in_group("bullet_player2").size() <= 4:
 					var bullet4 = pre_bullet2.instance()

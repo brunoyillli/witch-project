@@ -9,13 +9,11 @@ var dash = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if glow:
-		$Light2D.queue_free()
 	$timer/slowDash.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	if glow:
 		$anim.set_current_animation("glow")
 		if !dash:

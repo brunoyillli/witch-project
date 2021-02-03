@@ -44,7 +44,7 @@ func movimenta(delta):
 func _on_alma_verde_body_entered(body):
 	if body.get_collision_layer() == 1:
 		if body.power <=2:
-			body.power_frag += 1
+			body.power_frag += 4
 		queue_free()
 
 

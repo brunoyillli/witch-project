@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/enemies/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Bullet_Inimigo/bullet_inimigo_teleguiado.gd" type="Script" id=2]
-[ext_resource path="res://luz.png" type="Texture" id=3]
+[ext_resource path="res://Stages/Light.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.53123
@@ -56,8 +59,12 @@ tracks/0/keys = {
 }
 
 [node name="bullet_inimigo_teleguiado" type="Area2D"]
+z_index = 100
 collision_layer = 32
 script = ExtResource( 2 )
+
+[node name="Light" parent="." instance=ExtResource( 3 )]
+material = SubResource( 5 )
 
 [node name="bullet_estrela_negra" type="Sprite" parent="."]
 modulate = Color( 0.321569, 0.94902, 0.00392157, 1 )
@@ -80,10 +87,6 @@ anims/idle = SubResource( 4 )
 
 [node name="slowDash" type="Timer" parent="timer"]
 wait_time = 2.0
-
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 3 )
-texture_scale = 0.5
 [connection signal="area_entered" from="." to="." method="_on_bullet_inimigo_teleguiado_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_bullet_inimigo_teleguiado_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
